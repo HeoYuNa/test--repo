@@ -1,0 +1,21 @@
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+	char str1[20] = "March. 30, 2002";
+	
+	char* p;
+
+	p = strpbrk(str1, ".,");
+
+	printf("%s \n", p);
+	//포인터 p가 가리키고 있는 곳부터 문자열의 끝까지 출력
+
+	printf("%llx \n", (unsigned _int64)p);
+	//포인터가 가리키고 있는 주소값 출력
+
+	printf("%c \n", *p);
+	//포인터가 찾은 문자
+
+}
