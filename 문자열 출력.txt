@@ -1,0 +1,17 @@
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+	char str1[100];
+
+	printf("문자열을 입력하세요 : "); scanf_s("%s", str1, 100);
+	
+	if (!(strcmp(str1, "login"))) {
+		//strcmp는 문자열이 같으면 0을 리턴하기 때문에 같은 경우를 참으로 볼 때는 부정 연산자를 써야한다.
+		printf("success");
+	}
+	else {
+		printf("failure");
+	}
+}
