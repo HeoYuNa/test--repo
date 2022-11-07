@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <Windows.h>
+ 
+int* StrLength(char *s);
+ 
+ 
+void main()
+{
+    char c;
+    char s[100] = { 0 };
+    int count = 0;
+    int *len;
+ 
+    printf("Enter the Sentence : ");
+ 
+    for (; (c = getchar()) != '\n';) // 엔터가 입력될 때까지 문자열을 입력받는다
+    {
+        s[count] = c;
+        count++;
+    }
+ 
+ 
+    printf("\n");
+ 
+    Sleep(500);
+    printf("[*] WAIT, StrCpySelfMade function is running...\n");
+    Sleep(2000);
+ 
+    printf("\n");
+ 
