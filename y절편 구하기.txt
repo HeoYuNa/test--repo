@@ -1,0 +1,60 @@
+#include <stdio.h>
+#include <Windows.h>
+ 
+// Point 구조체를 선언하고 POINTER로 명명합니다
+typedef struct Point{
+    double x = 0;
+    double y = 0;
+} POINTER;
+ 
+// Line 구조체를 선언하고 LINE으로 명명합니다
+typedef struct Line{
+    POINTER p1;
+    POINTER p2;
+} LINE;
+ 
+ 
+void LineParameter(LINE* L, double* s, double* y);
+void Middle(LINE* L, POINTER* c);
+ 
+ 
+void main()
+{
+    LINE line;
+    POINTER pointer;
+    double s = 0;    // 기울기
+    double y[2] = { 0 }; // y 절편
+    
+ 
+    printf("[*] Enter the two points that you want to make a Line (x1, y1) (x2, y2) : ");
+    scanf_s("%lf %lf %lf %lf", &line.p1.x, &line.p1.y, &line.p2.x, &line.p2.y, 100);
+ 
+ 
+    // 기울기와 y절편을 구합니다
+    LineParameter(&line, &s, y);
+    printf("\n[+] Line Gradient is : [ %.2f ] and Line ySection is [ %.2f, %.2f ]\n\n", s, y[0],y[1]);
+    
+ 
+    // 중점을 구합니다
+    Middle(&line, &pointer);
+    printf("[+] Middle Point is [ %.1f, %.1f ]\n\n", pointer.x, pointer.y);
+ 
+}
+ 
+void LineParameter(LINE* L, double* s, double* y)
+{    
+    //  (y2-y1) / (x2-x1)으로 기울기를 구합니다
+    *s = (double)(L->p2.y - L->p1.y) / (double)(L->p2.x - L->p1.x);
+    
+ 
+    // y절편을 구합니다
+    y[1] = (L->p2.y - (*s)*L->p2.x);
+}
+ 
+ 
+void Middle(LINE* L, POINTER* c)
+{
+    // 중점을 구합니다
+    c->x = (L->p2.x + L->p1.x) / 2;
+    c->y = (L->p2.y + L->p1.y) / 2;
+}
