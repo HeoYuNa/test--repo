@@ -1,0 +1,51 @@
+#include <stdio.h>
+#include <windows.h>
+ 
+ 
+void main(int argc, char* argv[])
+{
+ 
+    if (argc <= 1)
+    {
+        printf("[-] Please Enter some arguments..\n");
+        exit(0);
+    }
+ 
+    int count = 0;
+    int isOption = false;
+    
+ 
+    // -c 옵션이 있는지 없는지 검사합니다
+    for (; argv[count] != '\0'; count++)
+    {
+        if (strcmp(argv[count],"-c") == 0)
+        {
+            isOption = true;
+            argv[count] = '\0';
+            printf("[*] -c Option Usage Found\n");
+            break;
+        }
+    }
+ 
+ 
+ 
+    for (count = 0; argv[count] != '\0'; count++)
+    {
+        // -c 옵션이 있으면
+        if (isOption)
+        {
+            // 모든 문자를 소문자로 변환하고 출력합니다
+            _strlwr_s(argv[count], strlen(argv[count]) + 1);
+            printf("[ %s ]\n", argv[count]);
+        }
+ 
+        // -c 옵션이 없으면
+        else
+        {
+            // 모든 문자를 대문자로 변환하고 출력합니다
+            _strupr_s(argv[count], strlen(argv[count]) + 1);
+            printf("[ %s ]\n", argv[count]);
+        }
+    }
+ 
+}
