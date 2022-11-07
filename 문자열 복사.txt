@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <Windows.h>
- 
+ git.hub
 void StrCpySelfMade(char* s1, const char* s2);
  
 void main()
