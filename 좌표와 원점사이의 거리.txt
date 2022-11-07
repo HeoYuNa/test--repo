@@ -1,0 +1,70 @@
+#include <stdio.h>
+#include <Windows.h>
+#include <math.h>
+ 
+// LEN을 100으로 정의합니다
+#define LEN 100
+ 
+ 
+// Point 구조체를 만들고 POINTER로 명명합니다
+typedef struct Point{
+    int x = 1;  // 1로 초기화 시킵니다 
+    int y = 1;    // (0,0)으로 설정하면 main에 있는 if 문에 처음부터 걸립니다
+} POINTER;
+ 
+ 
+double Distance(POINTER* p, int* coordinate);
+ 
+ 
+void main()
+{
+    POINTER p[LEN];
+    int count = 0;
+    double longDistance =0;
+    int coordinate[2] = { 0 };
+ 
+ 
+    printf("[*] Enter the coordinates until input (0,0)\n");
+    
+    // (0,0)이 입력될 때까지 계속 입력합니다
+    while (1)
+    {
+        printf(">>> ");
+        scanf_s("%d %d", &p[count].x, &p[count].y, LEN);    
+        if (p[count].x == 0 && p[count].y == 0)
+            break;
+        count++;
+    } 
+ 
+    // 가장 긴 거리를 구합니다 (해당 좌표도 구합니다)
+    longDistance = Distance(p,coordinate);
+ 
+    printf("\n[+] farthest distance is : [ %.2lf ], coordinate at [ %d, %d ]\n\n", longDistance,coordinate[0],coordinate[1]);
+}
+ 
+double Distance(POINTER* p, int* coordinate)
+{
+    int count = 0;
+    double maxdist = 0;
+    int* coor;
+ 
+    // 좌표를 구하기 위해 포인터를 지정합니다
+    coor = coordinate;
+ 
+ 
+    // LEN-1 길이까지 루프를 돌면서
+    for (; count <= LEN-1; count++)
+    {
+        // maxdist보다 긴 거리가 나타나면 maxdist에 긴 거리를 갱신합니다
+        // 좌표도 갱신합니다
+        if (maxdist <= sqrt(pow((double)(p[count].x), 2) + pow((double)(p[count].y), 2)))
+        {
+            maxdist = sqrt(pow((double)(p[count].x), 2) + pow((double)(p[count].y), 2));
+            coor[0] = p[count].x;
+            coor[1] = p[count].y;
+        }
+    }
+ 
+    return maxdist;
+ 
+}
