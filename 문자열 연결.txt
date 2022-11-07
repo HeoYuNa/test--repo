@@ -1,0 +1,19 @@
+#define _CRT_SECURE_NO_WARNINGS
+//scanf로만 되기 때문에 넣어뒀다.
+//별로 좋은 예제는 아님.
+
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+	char str1[100];
+	char str2[100];
+
+	printf("첫번째 문자열을 입력하세요 : "); scanf("%s", str1);
+	printf("두번째 문자열을 입력하세요 : "); scanf("%s", str2);
+
+	strcat_s(str1, str2);
+
+	printf("%s \n", str1);
+}
