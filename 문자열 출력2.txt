@@ -1,0 +1,17 @@
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+	const char* str1 = "March. 30, 2002";
+
+	size_t len = strcspn(str1, ".");
+	
+	printf("%zd \n", len);
+
+	char STRricive[10];
+
+	strncpy_s(STRricive, 10, str1, (strcspn(str1, ".")));
+
+	printf("%s", STRricive );
+}
