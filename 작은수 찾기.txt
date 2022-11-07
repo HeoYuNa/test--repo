@@ -1,5 +1,5 @@
 #include <stdio.h>
- 
+ git hub
 int isPrime(int n);
  
 void main()
